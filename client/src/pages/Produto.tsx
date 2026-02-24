@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { ReviewsSection } from "@/components/ReviewsSection";
 import { products } from "@/lib/products";
 import { useCartContext } from "@/contexts/CartContext";
 import { useState } from "react";
@@ -177,6 +178,11 @@ export default function Produto() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Seção de Avaliações */}
+        <div className="container">
+          <ReviewsSection productId={product.id} />
         </div>
       </main>
 
