@@ -10,8 +10,8 @@ import Produtos from "./pages/Produtos";
 import Produto from "./pages/Produto";
 import Carrinho from "./pages/Carrinho";
 import Checkout from "./pages/Checkout";
-
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path="/" component={Home} />

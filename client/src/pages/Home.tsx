@@ -5,8 +5,12 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProductCard } from "@/components/ProductCard";
 import { products, categories } from "@/lib/products";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 export default function Home() {
+  // Auth state from backend
+  const { user, loading } = useAuth();
+  
   const featuredProducts = products.slice(0, 4);
 
   return (

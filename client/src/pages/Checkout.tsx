@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useCartContext } from "@/contexts/CartContext";
+import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 
 export default function Checkout() {
@@ -26,6 +27,7 @@ export default function Checkout() {
     cardCvv: ""
   });
 
+  const createOrderMutation = trpc.orders.create.useMutation();
   const total = getTotalPrice();
 
   if (cart.length === 0) {
@@ -52,12 +54,49 @@ export default function Checkout() {
     e.preventDefault();
     setIsProcessing(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // Validar dados obrigatórios
+      if (!formData.name || !formData.email || !formData.address || !formData.city || !formData.state) {
+        toast.error("Por favor, preencha todos os campos obrigatórios");
+        setIsProcessing(false);
+        return;
+      }
 
-    toast.success("Pedido realizado com sucesso!");
-    clearCart();
-    setIsProcessing(false);
-    setLocation("/");
+      // Preparar dados do pedido
+      const orderData = {
+        customerName: formData.name,
+        customerEmail: formData.email,
+        customerPhone: formData.phone,
+        shippingAddress: `${formData.address}, ${formData.number}${formData.complement ? `, ${formData.complement}` : ""}`,
+        shippingCity: formData.city,
+        shippingState: formData.state,
+        shippingCEP: formData.cep,
+        items: cart.map(item => ({
+          productId: item.product.id,
+          quantity: item.quantity,
+          price: item.product.price,
+        })),
+        totalPrice: total,
+      };
+
+      // Criar pedido via API
+      const result = await createOrderMutation.mutateAsync(orderData);
+
+      if (result.success) {
+        toast.success("Pedido realizado com sucesso!");
+        clearCart();
+        setIsProcessing(false);
+        
+        // Redirecionar para home após 2 segundos
+        setTimeout(() => {
+          setLocation("/");
+        }, 2000);
+      }
+    } catch (error) {
+      console.error("Erro ao criar pedido:", error);
+      toast.error("Falha ao processar o pedido. Tente novamente.");
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -102,7 +141,6 @@ export default function Checkout() {
                       placeholder="Telefone"
                       value={formData.phone}
                       onChange={handleChange}
-                      required
                       className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
@@ -224,10 +262,10 @@ export default function Checkout() {
 
                 <Button
                   type="submit"
-                  disabled={isProcessing}
+                  disabled={isProcessing || createOrderMutation.isPending}
                   className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg"
                 >
-                  {isProcessing ? "Processando..." : "Confirmar Pedido"}
+                  {isProcessing || createOrderMutation.isPending ? "Processando..." : "Confirmar Pedido"}
                 </Button>
               </form>
             </div>
