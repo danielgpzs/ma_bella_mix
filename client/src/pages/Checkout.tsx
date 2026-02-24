@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -52,7 +52,6 @@ export default function Checkout() {
     e.preventDefault();
     setIsProcessing(true);
 
-    // Simular processamento de pagamento
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     toast.success("Pedido realizado com sucesso!");

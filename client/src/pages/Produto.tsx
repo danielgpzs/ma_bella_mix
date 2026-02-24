@@ -25,11 +25,9 @@ export default function Produto() {
           <div className="text-center py-20">
             <h1 className="text-3xl font-bold mb-4">Produto não encontrado</h1>
             <Link href="/produtos">
-              <a>
-                <Button className="bg-primary hover:bg-primary/90 text-white">
-                  Voltar aos Produtos
-                </Button>
-              </a>
+              <Button className="bg-primary hover:bg-primary/90 text-white">
+                Voltar aos Produtos
+              </Button>
             </Link>
           </div>
         </main>
@@ -57,10 +55,10 @@ export default function Produto() {
         <div className="container py-8">
           {/* Breadcrumb */}
           <Link href="/produtos">
-            <a className="flex items-center gap-2 text-primary hover:text-primary/80 mb-8">
+            <div className="flex items-center gap-2 text-primary hover:text-primary/80 mb-8 cursor-pointer">
               <ArrowLeft size={18} />
               Voltar aos Produtos
-            </a>
+            </div>
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -172,11 +170,9 @@ export default function Produto() {
                 </Button>
 
                 <Link href="/carrinho">
-                  <a>
-                    <Button className="w-full bg-white border-2 border-primary text-primary hover:bg-primary/5 font-semibold py-4 rounded-lg text-lg">
-                      Ir para Carrinho
-                    </Button>
-                  </a>
+                  <Button className="w-full bg-white border-2 border-primary text-primary hover:bg-primary/5 font-semibold py-4 rounded-lg text-lg">
+                    Ir para Carrinho
+                  </Button>
                 </Link>
               </div>
             </div>

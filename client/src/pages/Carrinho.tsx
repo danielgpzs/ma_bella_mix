@@ -22,12 +22,10 @@ export default function Carrinho() {
               Que tal explorar nossos produtos e encontrar algo especial?
             </p>
             <Link href="/produtos">
-              <a>
-                <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 flex items-center gap-2 mx-auto">
-                  <ArrowLeft size={18} />
-                  Voltar aos Produtos
-                </Button>
-              </a>
+              <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 flex items-center gap-2 mx-auto">
+                <ArrowLeft size={18} />
+                Voltar aos Produtos
+              </Button>
             </Link>
           </div>
         </main>
@@ -130,19 +128,15 @@ export default function Carrinho() {
                 </div>
 
                 <Link href="/checkout">
-                  <a>
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg mb-3">
-                      Ir para Checkout
-                    </Button>
-                  </a>
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-3 rounded-lg mb-3">
+                    Ir para Checkout
+                  </Button>
                 </Link>
 
                 <Link href="/produtos">
-                  <a>
-                    <Button className="w-full bg-white border border-primary text-primary hover:bg-primary/5 font-semibold py-3 rounded-lg">
-                      Continuar Comprando
-                    </Button>
-                  </a>
+                  <Button className="w-full bg-white border border-primary text-primary hover:bg-primary/5 font-semibold py-3 rounded-lg">
+                    Continuar Comprando
+                  </Button>
                 </Link>
 
                 <button

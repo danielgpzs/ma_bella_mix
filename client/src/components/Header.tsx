@@ -14,40 +14,40 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/">
-            <a className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
               <div className="text-2xl font-bold text-primary" style={{ fontFamily: "'Playfair Display', serif" }}>
                 MA BELLA MIX
               </div>
-            </a>
+            </div>
           </Link>
 
           {/* Navegação Desktop */}
           <nav className="hidden md:flex items-center gap-8">
             <Link href="/">
-              <a className="text-foreground hover:text-primary transition-colors font-medium">Home</a>
+              <span className="text-foreground hover:text-primary transition-colors font-medium cursor-pointer">Home</span>
             </Link>
             <Link href="/produtos">
-              <a className="text-foreground hover:text-primary transition-colors font-medium">Produtos</a>
+              <span className="text-foreground hover:text-primary transition-colors font-medium cursor-pointer">Produtos</span>
             </Link>
             <Link href="/sobre">
-              <a className="text-foreground hover:text-primary transition-colors font-medium">Sobre</a>
+              <span className="text-foreground hover:text-primary transition-colors font-medium cursor-pointer">Sobre</span>
             </Link>
             <Link href="/contato">
-              <a className="text-foreground hover:text-primary transition-colors font-medium">Contato</a>
+              <span className="text-foreground hover:text-primary transition-colors font-medium cursor-pointer">Contato</span>
             </Link>
           </nav>
 
           {/* Carrinho e Menu Mobile */}
           <div className="flex items-center gap-4">
             <Link href="/carrinho">
-              <a className="relative p-2 hover:bg-secondary rounded-lg transition-colors">
+              <div className="relative p-2 hover:bg-secondary rounded-lg transition-colors cursor-pointer">
                 <ShoppingCart size={24} className="text-foreground" />
                 {totalItems > 0 && (
                   <span className="absolute top-0 right-0 bg-primary text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     {totalItems}
                   </span>
                 )}
-              </a>
+              </div>
             </Link>
 
             {/* Menu Mobile */}
@@ -64,16 +64,16 @@ export function Header() {
         {mobileMenuOpen && (
           <nav className="md:hidden pb-4 border-t border-border">
             <Link href="/">
-              <a className="block py-2 text-foreground hover:text-primary transition-colors">Home</a>
+              <span className="block py-2 text-foreground hover:text-primary transition-colors cursor-pointer">Home</span>
             </Link>
             <Link href="/produtos">
-              <a className="block py-2 text-foreground hover:text-primary transition-colors">Produtos</a>
+              <span className="block py-2 text-foreground hover:text-primary transition-colors cursor-pointer">Produtos</span>
             </Link>
             <Link href="/sobre">
-              <a className="block py-2 text-foreground hover:text-primary transition-colors">Sobre</a>
+              <span className="block py-2 text-foreground hover:text-primary transition-colors cursor-pointer">Sobre</span>
             </Link>
             <Link href="/contato">
-              <a className="block py-2 text-foreground hover:text-primary transition-colors">Contato</a>
+              <span className="block py-2 text-foreground hover:text-primary transition-colors cursor-pointer">Contato</span>
             </Link>
           </nav>
         )}

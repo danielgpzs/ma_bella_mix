@@ -33,12 +33,10 @@ export default function Home() {
                 Sua rotina de skincare começa aqui. Produtos premium para uma beleza natural.
               </p>
               <Link href="/produtos">
-                <a>
-                  <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 text-lg flex items-center gap-2 mx-auto">
-                    Comprar Agora
-                    <ArrowRight size={20} />
-                  </Button>
-                </a>
+                <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 text-lg flex items-center gap-2 mx-auto">
+                  Comprar Agora
+                  <ArrowRight size={20} />
+                </Button>
               </Link>
             </div>
           </div>
@@ -55,12 +53,12 @@ export default function Home() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
             {categories.map((category) => (
               <Link key={category.id} href="/produtos">
-                <a className="p-6 bg-secondary rounded-lg hover:bg-accent/10 transition-colors text-center group">
+                <div className="p-6 bg-secondary rounded-lg hover:bg-accent/10 transition-colors text-center group cursor-pointer">
                   <div className="text-4xl mb-2">{category.icon}</div>
                   <p className="font-semibold text-sm sm:text-base group-hover:text-primary transition-colors">
                     {category.name}
                   </p>
-                </a>
+                </div>
               </Link>
             ))}
           </div>
@@ -83,11 +81,9 @@ export default function Home() {
           </div>
           <div className="text-center mt-12">
             <Link href="/produtos">
-              <a>
-                <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 text-lg">
-                  Ver Todos os Produtos
-                </Button>
-              </a>
+              <Button className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 text-lg">
+                Ver Todos os Produtos
+              </Button>
             </Link>
           </div>
         </section>
