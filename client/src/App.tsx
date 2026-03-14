@@ -5,11 +5,14 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { CartProvider } from "./contexts/CartContext";
+import { NotificationProvider } from "./contexts/NotificationContext";
+import { NotificationContainer } from "./components/NotificationContainer";
 import Home from "./pages/Home";
 import Produtos from "./pages/Produtos";
 import Produto from "./pages/Produto";
 import Carrinho from "./pages/Carrinho";
 import Checkout from "./pages/Checkout";
+import AdminDashboard from "./pages/AdminDashboard";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -19,6 +22,7 @@ function Router() {
       <Route path="/produto/:id" component={Produto} />
       <Route path="/carrinho" component={Carrinho} />
       <Route path="/checkout" component={Checkout} />
+      <Route path="/admin" component={AdminDashboard} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
@@ -30,10 +34,13 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <CartProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
+          <NotificationProvider>
+            <TooltipProvider>
+              <Toaster />
+              <NotificationContainer />
+              <Router />
+            </TooltipProvider>
+          </NotificationProvider>
         </CartProvider>
       </ThemeProvider>
     </ErrorBoundary>
